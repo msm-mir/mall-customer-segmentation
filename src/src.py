@@ -2,12 +2,20 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
+import numpy as np
 
 class kmeans:
     def __init__(self, k, max_iters, tolerance):
         self.k = k
         self.max_iters = max_iters
         self.tolerance = tolerance
+
+    # centroid initialization
+    def centroid_init(self, X):
+        np.random.seed(42)
+        n_samples = X.shape[0]
+        indices = np.random.choice(n_samples, size=self.k, replace=False)
+        return X[indices].copy()
 
 # read dataset
 df = pd.read_csv('Mall_Customers.csv')
