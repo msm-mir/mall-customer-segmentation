@@ -3,6 +3,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler
 
+class kmeans:
+    def __init__(self, k, max_iters, tolerance):
+        self.k = k
+        self.max_iters = max_iters
+        self.tolerance = tolerance
+
 # read dataset
 df = pd.read_csv('Mall_Customers.csv')
 
