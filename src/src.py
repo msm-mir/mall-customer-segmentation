@@ -42,6 +42,18 @@ class kmeans:
                 new_centroids.append(random_center[0])
 
         return np.array(new_centroids)
+    
+    # calculate inertia for each k value
+    def calculate_inertia(self, X, centroids, labels, k):
+        inertia = 0
+        
+        for i in range(k):
+            cluster_points = X[labels == i]
+
+            if len(cluster_points) > 0:
+                inertia += np.sum((cluster_points - centroids[i]) ** 2)
+
+        return inertia
 
 # read dataset
 df = pd.read_csv('Mall_Customers.csv')
