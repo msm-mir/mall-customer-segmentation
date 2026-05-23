@@ -121,3 +121,18 @@ plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
 plt.title('Elbow method')
 plt.show()
+
+# figure of final and best model by k=5
+final_model = kmeans(5, 300, 0.0001)
+labels, centroids, _, _ = final_model.fit(X_standardize)
+df['Cluster'] = labels
+
+plt.figure(figsize=(7, 5))
+sns.scatterplot(x='Annual Income (k$)', y='Spending Score (1-100)',
+                hue='Cluster', data=df)
+plt.scatter(scaler.inverse_transform(centroids)[:, 0],
+            scaler.inverse_transform(centroids)[:, 1],
+            label='Centroids')
+plt.title('Customer Segmentation (K=5)')
+plt.legend()
+plt.show()
