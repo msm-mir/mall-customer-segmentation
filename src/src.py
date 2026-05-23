@@ -26,6 +26,22 @@ class kmeans:
         distance = np.sqrt(np.sum(((reshaped_X - reshaped_centroids) ** 2), axis=2))
         labels = np.argmin(distance, axis=1)
         return labels
+    
+    # update centroids by the points of each cluster
+    def update_centroids(self, X, labels):
+        new_centroids = []
+
+        for i in range(self.k):
+            cluster_points = X[labels == i]
+
+            if len(cluster_points) > 0:
+                new_center = cluster_points.mean(axis=0)
+                new_centroids.append(new_center)
+            else:
+                random_center = self.centroid_init(X)
+                new_centroids.append(random_center[0])
+
+        return np.array(new_centroids)
 
 # read dataset
 df = pd.read_csv('Mall_Customers.csv')
