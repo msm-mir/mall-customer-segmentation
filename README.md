@@ -36,6 +36,10 @@ The goal of this project is to apply unsupervised learning techniques to group c
 ```
 ├── src/
 │   └── src.py
+├── visualizations/
+│   |── customer_segmentation.png
+│   |── elbow_method.png
+│   └── pairplot_by_gender.png
 ├── .gitignore
 └── README.md
 ```
