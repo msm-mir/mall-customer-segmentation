@@ -78,7 +78,7 @@ class kmeans:
         return labels, new_centroids, total_iters, converged
 
 # read dataset
-df = pd.read_csv('Mall_Customers.csv')
+df = pd.read_csv('src/data/Mall_Customers.csv')
 
 # drop CustomerID column
 df = df.drop('CustomerID', axis=1)
